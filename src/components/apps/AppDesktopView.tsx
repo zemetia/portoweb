@@ -18,7 +18,7 @@ export default function AppDesktopView({ icon, name }: AppDesktopViewProps) {
         className=''
       />
       <Typography color='white' variant='p4' className='text-white'>
-        Test
+        {name}
       </Typography>
     </div>
   );

@@ -26,24 +26,24 @@ export default function RightClick() {
     <>
       {showMenu && (
         <div
-          className='fixed z-50 flex flex-col bg-white border border-gray-300 shadow-lg'
+          className='fixed z-50 flex flex-col gap-1 min-w-[17rem] bg-slate-200 border border-gray-300 shadow-lg rounded-lg p-1'
           style={{ top: menuPosition.y, left: menuPosition.x }}
         >
           <div
             onClick={handleMenuClick}
-            className='py-1 px-4 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 cursor-pointer'
+            className='py-1 px-4 text-sm text-gray-800 rounded-md hover:bg-gray-300/60 cursor-pointer'
           >
             Menu item 1
           </div>
           <div
             onClick={handleMenuClick}
-            className='py-1 px-4 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 cursor-pointer'
+            className='py-1 px-4 text-sm text-gray-800 rounded-md hover:bg-gray-300/60 cursor-pointer'
           >
             Menu item 2
           </div>
           <div
             onClick={handleMenuClick}
-            className='py-1 px-4 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 cursor-pointer'
+            className='py-1 px-4 text-sm text-gray-800 rounded-md hover:bg-gray-300/60 cursor-pointer'
           >
             Menu item 3
           </div>

@@ -13,8 +13,8 @@ export default function MainPage() {
       <RightClick></RightClick>
       <SEO title='Home' description='Main Page' />
       <div className='grid grid-flow-row gap-5 h-5'>
-        <AppDesktopView icon='' name='Maps' />
-        <AppDesktopView icon='' name='Maps' />
+        <AppDesktopView icon='' name='Projects' />
+        <AppDesktopView icon='' name='Schools' />
         <AppDesktopView icon='' name='Maps' />
         <AppDesktopView icon='' name='Maps' />
         <AppDesktopView icon='' name='Maps' />
