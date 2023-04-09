@@ -1,4 +1,3 @@
-import Start from '@/components/modal/Start';
 import Menubar from '@/layouts/Menubar';
 import clsxm from '@/lib/clsxm';
 
