@@ -1,9 +1,8 @@
-import NextImage from '@/components/NextImage';
+/* eslint-disable @next/next/no-img-element */
 import Typography from '@/components/typography/Typography';
-import Image from 'next/image';
 
 interface AppDesktopViewProps {
-  icon: string;
+  icon?: string;
   name: string;
 }
 
@@ -11,7 +10,7 @@ export default function AppDesktopView({ icon, name }: AppDesktopViewProps) {
   return (
     <div className='flex flex-col w-fit text-center mx-1 px-3 rounded-md hover:bg-[#85a0d8]/50 '>
       <img
-        src='/favicon.ico'
+        src={icon ?? '/favicon.ico'}
         alt='app-icon'
         width='55'
         height='55'
