@@ -1,3 +1,6 @@
+# Zemetia Portofolio Web v.2
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/27951856/230785190-3fc949e5-4491-47ca-aefc-ade9406d80e9.png">
+
 ## Commit Message Convention
 
 This website follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
