@@ -34,7 +34,7 @@ export function AppWindow({ open, setOpen, ...rest }: AppWindowProps) {
           <Dialog.Overlay className='fixed inset-0 bg-black bg-opacity-10 transition-opacity' />
         </Transition.Child>
         <div
-          className='flex min-h-screen items-end justify-center px-4 pt-4 text-center'
+          className='flex min-h-screen items-end justify-center text-center'
           ref={containerRef}
         >
           <Transition.Child
@@ -49,7 +49,7 @@ export function AppWindow({ open, setOpen, ...rest }: AppWindowProps) {
             <div
               className={clsxm(
                 'align inline-block transform rounded-lg bg-white text-left shadow-xl transition-all',
-                'my-14 min-w-[15rem] max-h-[90%] h-[30rem] w-[28rem]'
+                'mb-14 min-w-[15rem] max-h-[90%] h-[30rem] w-[28rem]'
               )}
             >
               <div className=' h-[90%] rounded-lg border-b border-w'>aa</div>

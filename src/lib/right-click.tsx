@@ -6,11 +6,16 @@ export default function RightClick() {
 
   function handleContextMenu(event: MouseEvent) {
     event.preventDefault();
+    // console.log(document.activeElement); dapatkan element active terakhir kali sebelum klik kanan, berguna untuk ganti context menu untuk file
     setShowMenu(true);
     setMenuPosition({ x: event.clientX, y: event.clientY });
   }
 
   function handleMenuClick() {
+    setShowMenu(false);
+  }
+
+  function handleBlur() {
     setShowMenu(false);
   }
 
@@ -26,6 +31,11 @@ export default function RightClick() {
     <>
       {showMenu && (
         <div
+          onBlur={handleBlur}
+          ref={(input) => {
+            input?.focus();
+          }}
+          tabIndex={0}
           className='fixed z-50 flex flex-col gap-1 min-w-[17rem] bg-slate-200 border border-gray-300 shadow-lg rounded-lg p-1'
           style={{ top: menuPosition.y, left: menuPosition.x }}
         >
