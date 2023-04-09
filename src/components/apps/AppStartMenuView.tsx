@@ -36,7 +36,7 @@ export default function AppStartMenuView({
           height='55'
           className=''
         />
-        <Typography color='white' variant='p4' className='text-white truncate'>
+        <Typography color='black' className='text-black text-xs'>
           {name}
         </Typography>
       </div>
