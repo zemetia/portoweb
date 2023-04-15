@@ -5,21 +5,24 @@ import Draggable from 'react-draggable';
 
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
+import useAppStore from '@/store/useAppStore';
 
 interface AppDesktopViewProps {
   icon?: string;
   name: string;
-  setOpenApp: React.Dispatch<React.SetStateAction<boolean>>;
+  appId: string;
 }
 
 export default function AppDesktopView({
   icon,
   name,
-  setOpenApp,
+  appId,
 }: AppDesktopViewProps) {
   const [active, setActive] = useState<boolean>(false);
+  const setAppStatus = useAppStore.useSetAppStatus();
+
   const doubleClickHandler = () => {
-    setOpenApp(true);
+    setAppStatus(appId, true);
   };
 
   const singleClickHandler = () => {

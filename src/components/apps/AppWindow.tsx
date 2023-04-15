@@ -1,66 +1,87 @@
-import { Dialog, Transition } from '@headlessui/react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Dialog } from '@headlessui/react';
 import * as React from 'react';
 import Draggable from 'react-draggable';
 import { FiMinus, FiSquare, FiX } from 'react-icons/fi';
 
 import Typography from '@/components/Typography';
 import clsxm from '@/lib/clsxm';
+import useAppStore from '@/store/useAppStore';
 import { ExtractProps } from '@/types/helper';
 
 type AppWindowProps = {
   className?: string;
   title: string;
+  appId: string;
   children: React.ReactNode;
   /** Use sm:max-w-xx to adjust max-width */
   modalContainerClassName?: string;
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
+  /** SIZE */
+  minWidth?: number;
+  maxWidth?: number;
+  minHeight?: number;
+  maxHeight?: number;
+  width?: number;
+  height?: number;
+  fixed?: boolean;
 } & Omit<ExtractProps<typeof Dialog>, 'onClose'>;
 
 export function AppWindowRoot({
   className,
   title,
+  appId,
   children,
   modalContainerClassName,
-  open,
-  setOpen,
+  fixed_size = false,
   ...rest
 }: AppWindowProps) {
-  const containerRef = React.createRef<HTMLDivElement>();
+  const [active, setActive] = React.useState<boolean>(false);
+  const setAppStatus = useAppStore.useSetAppStatus();
+  const open = useAppStore.useRunningApp()[appId];
+  const setOpen = (state: boolean) => setAppStatus(appId, state);
+  const ref = React.useRef(null);
+
+  const clickHandler = () => {
+    setActive(true);
+  };
+
+  const blurHandler = () => {
+    setActive(false);
+  };
 
   return (
-    <Transition.Root show={open} as={React.Fragment}>
-      <Dialog
-        as='div'
-        className={clsxm('fixed inset-0 z-40 overflow-y-auto ', className)}
-        {...rest}
-        onClose={setOpen}
-        initialFocus={containerRef}
-      >
-        <div
-          className='flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0 '
-          ref={containerRef}
-        >
-          {/* This element is to trick the browser into centering the modal contents. */}
-          <span
-            className='hidden sm:inline-block sm:h-screen sm:align-middle'
-            aria-hidden='true'
+    <div>
+      {open && (
+        <Draggable handle='.head-draggable-handle'>
+          <div
+            className={clsxm(
+              'fixed top-0 left-0 w-fit h-fit z-[5]',
+              active ? 'z-[6]' : '',
+              className
+            )}
+            onClick={clickHandler}
+            onBlur={blurHandler}
+            ref={ref}
+            {...rest}
+            // Add any other styles or props as needed
           >
-            &#8203;
-          </span>
-
-          <Draggable handle='.head-draggable-handle'>
             <div
               className={clsxm(
-                'align inline-block transform rounded-lg bg-white text-left shadow-xl transition-all sm:align-middle ',
+                'align inline-block transform rounded-lg bg-white text-left shadow-xl sm:align-middle ',
                 'px-3 pt-2 pb-4 sm:my-8 min-w-[15rem]',
                 modalContainerClassName
               )}
             >
               <div className='flex flex-row justify-between items-start head-draggable-handle'>
-                <div>
+                <div
+                  onDragStart={(event: any) => {
+                    event.preventDefault();
+                  }}
+                >
                   <Typography variant='h3' className='text-sm'>
                     {title}
+                    {fixed_size}
                   </Typography>
                 </div>
                 <div className='flex flex-row gap-3'>
@@ -92,10 +113,10 @@ export function AppWindowRoot({
               </div>
               <div className='w-full'>{children}</div>
             </div>
-          </Draggable>
-        </div>
-      </Dialog>
-    </Transition.Root>
+          </div>
+        </Draggable>
+      )}
+    </div>
   );
 }
 
