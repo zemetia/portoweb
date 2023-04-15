@@ -1,10 +1,18 @@
 import AppWindow from '@/components/apps/AppWindow';
+import useAppStore from '@/store/useAppStore';
 
 export default function EducationApp() {
+  //App Datas
+  const addApp = useAppStore.useAddApp();
+  addApp('app.educations', {
+    name: 'Education',
+    favicon: '/images/folder/icons8-file-folder-48.png',
+  });
+
   return (
     <AppWindow
-      title='Educations'
       appId='app.educations'
+      title='Education'
       minWidth={10}
       fixed_size={true}
       width={0}

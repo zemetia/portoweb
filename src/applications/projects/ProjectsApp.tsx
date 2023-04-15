@@ -1,7 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import AppWindow from '@/components/apps/AppWindow';
+import useAppStore from '@/store/useAppStore';
 
 export default function ProjectsApp() {
+  //App Datas
+  const addApp = useAppStore.useAddApp();
+  addApp('app.projects', {
+    name: 'Projects',
+    favicon: '/images/folder/icons8-file-folder-48.png',
+  });
+
   return (
     <AppWindow title='Projects' appId='app.projects'>
       <AppWindow.Body>

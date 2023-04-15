@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import { useState } from 'react';
 import Draggable from 'react-draggable';
 
@@ -48,7 +49,7 @@ export default function AppDesktopView({
             active ? 'bg-[#85a0d8]/75' : ''
           )}
         >
-          <img
+          <Image
             onDragStart={(event: any) => {
               event.preventDefault();
             }}

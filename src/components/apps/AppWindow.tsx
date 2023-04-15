@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dialog } from '@headlessui/react';
+import Image from 'next/image';
 import * as React from 'react';
 import Draggable from 'react-draggable';
 import { FiMinus, FiSquare, FiX } from 'react-icons/fi';
@@ -11,7 +12,6 @@ import { ExtractProps } from '@/types/helper';
 
 type AppWindowProps = {
   className?: string;
-  title: string;
   appId: string;
   children: React.ReactNode;
   /** Use sm:max-w-xx to adjust max-width */
@@ -29,7 +29,6 @@ type AppWindowProps = {
 
 export function AppWindowRoot({
   className,
-  title,
   appId,
   children,
   modalContainerClassName,
@@ -41,6 +40,9 @@ export function AppWindowRoot({
   const [maximize, setMaximize] = React.useState<boolean>(false);
 
   const setAppStatus = useAppStore.useSetAppStatus();
+  const getApp = useAppStore.useGetApp();
+  const appData = getApp(appId);
+
   const open = useAppStore.useRunningApp()[appId];
   const setOpen = (state: boolean) => setAppStatus(appId, state);
 
@@ -92,9 +94,17 @@ export function AppWindowRoot({
                   onDragStart={(event: any) => {
                     event.preventDefault();
                   }}
+                  className='flex flex-row gap-2'
                 >
+                  <Image
+                    src={appData.favicon ?? '/favicon.ico'}
+                    width={20}
+                    height={20}
+                    alt='AppIcon'
+                  />
                   <Typography variant='h3' className='text-sm'>
-                    {title}
+                    {appData.name}
+
                     {fixed_size}
                   </Typography>
                 </div>
@@ -102,7 +112,10 @@ export function AppWindowRoot({
                   <button
                     type='button'
                     className='focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2'
-                    onClick={() => setMinimize(true)}
+                    onClick={() => {
+                      setMaximize(false);
+                      setMinimize(true);
+                    }}
                   >
                     <span className='sr-only'>Minimize</span>
                     <FiMinus className='h-5 w-5' aria-hidden='true' />
