@@ -14,12 +14,28 @@ export default function MainPage() {
         <AppDesktopView
           appId='app.projects'
           name='Projects'
-          icon='/images/folder/icons8-file-folder-48.png'
+          icon='/images/clipboard.png'
         />
-        <AppDesktopView appId='app.educations' name='Educations' />
-        <AppDesktopView appId='app.projects' name='Maps' />
-        <AppDesktopView appId='app.projects' name='Maps' />
-        <AppDesktopView appId='app.projects' name='Maps' />
+        <AppDesktopView
+          appId='app.educations'
+          name='Educations'
+          icon='/images/education.png'
+        />
+        <AppDesktopView
+          appId='app.instagram'
+          name='Instagram'
+          icon='/images/instagram.png'
+        />
+        <AppDesktopView
+          appId='app.projects'
+          name='Youtube'
+          icon='/images/youtube.png'
+        />
+        <AppDesktopView
+          appId='app.projects'
+          name='Gallery'
+          icon='/images/gallery.png'
+        />
       </div>
     </WindowsLayout>
   );

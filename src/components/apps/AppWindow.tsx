@@ -2,8 +2,9 @@
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
 import * as React from 'react';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableEvent } from 'react-draggable';
 import { FiMinus, FiSquare, FiX } from 'react-icons/fi';
+import { shallow } from 'zustand/shallow';
 
 import Typography from '@/components/Typography';
 import clsxm from '@/lib/clsxm';
@@ -36,12 +37,27 @@ export function AppWindowRoot({
   ...rest
 }: AppWindowProps) {
   const [active, setActive] = React.useState<boolean>(false);
-  const [minimize, setMinimize] = React.useState<boolean>(false);
   const [maximize, setMaximize] = React.useState<boolean>(false);
+  const [x, setX] = React.useState(0);
+  const [y, setY] = React.useState(0);
+
+  const updatePosition = (
+    event: DraggableEvent,
+    dragElement: { x: number; y: number }
+  ) => {
+    setX(dragElement.x);
+    setY(dragElement.y);
+  };
+
+  const setMinimize = useAppStore.useSetMinimize();
 
   const setAppStatus = useAppStore.useSetAppStatus();
   const getApp = useAppStore.useGetApp();
   const appData = getApp(appId);
+  const { minimize } = useAppStore(
+    (state) => ({ minimize: state.apps[appId].minimize }),
+    shallow
+  );
 
   const open = useAppStore.useRunningApp()[appId];
   const setOpen = (state: boolean) => setAppStatus(appId, state);
@@ -60,8 +76,13 @@ export function AppWindowRoot({
       {open && (
         <Draggable
           handle='.head-draggable-handle'
+          onStop={updatePosition}
           position={
-            maximize ? { x: 0, y: 0 } : minimize ? { x: 0, y: -50 } : undefined
+            maximize
+              ? { x: 0, y: 0 }
+              : minimize
+              ? { x: 0, y: -50 }
+              : { x: x, y: y }
           }
           disabled={minimize}
         >
@@ -114,7 +135,7 @@ export function AppWindowRoot({
                     className='focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2'
                     onClick={() => {
                       setMaximize(false);
-                      setMinimize(true);
+                      setMinimize(appId, true);
                     }}
                   >
                     <span className='sr-only'>Minimize</span>

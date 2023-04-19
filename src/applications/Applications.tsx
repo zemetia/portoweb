@@ -1,4 +1,5 @@
 import EducationApp from '@/applications/educations/EducationApp';
+import InstagramApp from '@/applications/instagram/InstagramApp';
 import ProjectsApp from '@/applications/projects/ProjectsApp';
 
 export default function Applications() {
@@ -6,6 +7,7 @@ export default function Applications() {
     <>
       <EducationApp />
       <ProjectsApp />
+      <InstagramApp />
     </>
   );
 }

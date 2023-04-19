@@ -11,6 +11,7 @@ type AppStoreType = {
   apps: { [id: string]: AppDataInterface };
   addApp: (id: string, app: AppDataInterface) => void;
   getApp: (id: string) => AppDataInterface;
+  setMinimize: (id: string, status: boolean) => void;
 };
 
 const useAppStoreBase = create<AppStoreType>((set, get) => ({
@@ -42,6 +43,13 @@ const useAppStoreBase = create<AppStoreType>((set, get) => ({
     );
   },
   getApp: (id: string) => get().apps[id],
+  setMinimize: (id: string, status: boolean) => {
+    set(
+      produce<AppStoreType>((state) => {
+        state.apps[id].minimize = status;
+      })
+    );
+  },
 }));
 
 const useAppStore = createSelectorHooks(useAppStoreBase);
