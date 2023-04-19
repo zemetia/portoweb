@@ -7,7 +7,9 @@ export default function ProjectsApp() {
   const addApp = useAppStore.useAddApp();
   addApp('app.projects', {
     name: 'Projects',
-    favicon: '/images/folder/icons8-file-folder-48.png',
+    favicon: '/images/clipboard-64px.png',
+    minimize: false,
+    position: { x: 0, y: 0 },
   });
 
   return (

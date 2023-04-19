@@ -6,7 +6,9 @@ export default function EducationApp() {
   const addApp = useAppStore.useAddApp();
   addApp('app.educations', {
     name: 'Education',
-    favicon: '/images/folder/icons8-file-folder-48.png',
+    favicon: '/images/education-64px.png',
+    minimize: false,
+    position: { x: 0, y: 0 },
   });
 
   return (

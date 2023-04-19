@@ -9,17 +9,33 @@ export default function MainPage() {
     <WindowsLayout>
       <RightClick />
       <Applications />
-      <SEO title='Home' description='Main Page' />
+      <SEO title='Desktop' description='Main Page' />
       <div className='grid grid-flow-row gap-5 h-5'>
         <AppDesktopView
           appId='app.projects'
           name='Projects'
-          icon='/images/folder/icons8-file-folder-48.png'
+          icon='/images/clipboard.png'
         />
-        <AppDesktopView appId='app.educations' name='Educations' />
-        <AppDesktopView appId='app.projects' name='Maps' />
-        <AppDesktopView appId='app.projects' name='Maps' />
-        <AppDesktopView appId='app.projects' name='Maps' />
+        <AppDesktopView
+          appId='app.educations'
+          name='Educations'
+          icon='/images/education.png'
+        />
+        <AppDesktopView
+          appId='app.portofolio'
+          name='Portofolio'
+          icon='/images/business.png'
+        />
+        <AppDesktopView
+          appId='app.projects'
+          name='Youtube'
+          icon='/images/youtube.png'
+        />
+        <AppDesktopView
+          appId='app.gallery'
+          name='Gallery'
+          icon='/images/gallery.png'
+        />
       </div>
     </WindowsLayout>
   );
