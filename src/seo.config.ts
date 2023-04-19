@@ -14,13 +14,13 @@ const config: DefaultSeoProps = {
     site: '@site',
     cardType: 'summary_large_image',
   },
-  titleTemplate: '%s IFITS FRS',
-  description: 'this is a description',
-  defaultTitle: 'IFITS FRS',
+  titleTemplate: '%s Zemetia',
+  description: 'Yoel Mountanus Sitorus Portofolio',
+  defaultTitle: 'Zemetia',
   additionalLinkTags: [
     {
       rel: 'icon',
-      href: '/favicon.ico',
+      href: '/images/cv-64px.png',
     },
   ],
 };

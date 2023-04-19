@@ -9,7 +9,7 @@ export default function MainPage() {
     <WindowsLayout>
       <RightClick />
       <Applications />
-      <SEO title='Home' description='Main Page' />
+      <SEO title='Desktop' description='Main Page' />
       <div className='grid grid-flow-row gap-5 h-5'>
         <AppDesktopView
           appId='app.projects'
@@ -22,9 +22,9 @@ export default function MainPage() {
           icon='/images/education.png'
         />
         <AppDesktopView
-          appId='app.instagram'
-          name='Instagram'
-          icon='/images/instagram.png'
+          appId='app.portofolio'
+          name='Portofolio'
+          icon='/images/business.png'
         />
         <AppDesktopView
           appId='app.projects'
@@ -32,7 +32,7 @@ export default function MainPage() {
           icon='/images/youtube.png'
         />
         <AppDesktopView
-          appId='app.projects'
+          appId='app.gallery'
           name='Gallery'
           icon='/images/gallery.png'
         />
