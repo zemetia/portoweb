@@ -1,5 +1,8 @@
 # Zemetia Portofolio Web v.2
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/27951856/230785190-3fc949e5-4491-47ca-aefc-ade9406d80e9.png">
+![image](https://user-images.githubusercontent.com/27951856/234887314-46003b88-43e2-4e2e-98f0-456d9b2627fa.png)
+![image](https://user-images.githubusercontent.com/27951856/234887489-79e6c907-49be-47b7-9391-ed3a8bde26e2.png)
+![image](https://user-images.githubusercontent.com/27951856/234887724-48578274-c9c6-47d3-ac55-097b6a023f00.png)
+![image](https://user-images.githubusercontent.com/27951856/234887913-d18430ce-669b-4edf-9d90-1973cef87682.png)
 
 ## Commit Message Convention
 
