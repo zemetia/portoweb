@@ -140,7 +140,7 @@ export function AppWindowRoot({
                 <div className='flex flex-row gap-3'>
                   <button
                     type='button'
-                    className='focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2'
+                    className='focus:ring-primary-500 rounded-md bg-white hover:bg-gray-200 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2'
                     onClick={() => {
                       setMaximize(false);
                       setMinimize(appId, true);
@@ -151,7 +151,7 @@ export function AppWindowRoot({
                   </button>
                   <button
                     type='button'
-                    className='focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2'
+                    className='focus:ring-primary-500 rounded-md bg-white hover:bg-gray-200 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2'
                     onClick={() => setMaximize(!maximize)}
                   >
                     <span className='sr-only'>Maximize</span>
@@ -159,10 +159,10 @@ export function AppWindowRoot({
                   </button>
                   <button
                     type='button'
-                    className='focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2'
+                    className='focus:ring-primary-500 rounded-md bg-white hover:bg-red-500 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2'
                     onClick={() => setOpen(false)}
                   >
-                    <span className='sr-only'>Close</span>
+                    <span className='sr-only '>Close</span>
                     <FiX className='h-5 w-5' aria-hidden='true' />
                   </button>
                 </div>
